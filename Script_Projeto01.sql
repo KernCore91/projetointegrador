@@ -1,7 +1,7 @@
 -- banco de dados : projetointegrador
 
-drop table if exists baixa;
-drop table if exists patrimonio;
+drop table if exists Baixa;
+drop table if exists Bem;
 
 create table Bem(
 	id serial primary key,
@@ -27,5 +27,5 @@ create table Baixa(
 	FOREIGN KEY (idPatrimonio) REFERENCES patrimonio (id)
 );
 
-insert into patrimonio (nome_bem, dataAquisicao, categoria, vida_util, bem_usado, valorAquisicao, taxa_residual, turnos)
-values ('Veiculo', '2015-12-18', 'Veiculos', 4, 'não', 42000, 10, 1);
+--insert into Bem (nome_bem, dataAquisicao, categoria, vida_util, bem_usado, valorAquisicao, taxa_residual, turnos)
+--values ('Veiculo', '2015-12-18', 'Veiculos', 4, 'não', 42000, 10, 1);
