@@ -6,6 +6,14 @@ import java.util.Date;
 import com.pi.projetointegrador.Bem;
 
 public class Calculo {
+	private Float resta_VidaUtil;
+	private Float metade_VidaUtil;
+	private Float vidadmissivel;
+	private Float taxaDepreciacao;
+	private Float valor_residual;
+	private Float valor_depreciado;
+	private Float valor_contabil;
+	private Integer depreciacao;
 	private Bem bem = new Bem();
 
 	public int calcularPeriodo(Bem b, Date dataAtual) {
@@ -74,24 +82,24 @@ public class Calculo {
 		float calcTurno;
 		int periodo = this.calcularPeriodo(b, dataInf);
 		b.setPeriodo(periodo);
-		b.setValor_residual((b.getValor_aquisicao() * b.getTaxa_residual()) / 100);
+		setValor_residual((b.getValorAquisicao() * b.getTaxa_residual()) / 100);
 		/// se o bem for usado ou não
 		if (b.getBem_usado() == "Não") {
-			b.setVidadmissivel(b.getVida_util());
+			setVidadmissivel(b.getVida_util());
 		}
 		else {
-			b.setMetade_VidaUtil(b.getVida_util() / 2);
-			b.setResta_VidaUtil(b.getVida_util() - b.getTempo_uso());
+			setMetade_VidaUtil(b.getVida_util() / 2);
+			setResta_VidaUtil(b.getVida_util() - b.getTempo_uso());
 			//
-			if (b.getVida_util() < b.getTempo_uso() || b.getMetade_VidaUtil() > b.getResta_VidaUtil()) {
-				b.setVidadmissivel(b.getMetade_VidaUtil());
+			if (b.getVida_util() < b.getTempo_uso() || getMetade_VidaUtil() > getResta_VidaUtil()) {
+				setVidadmissivel(getMetade_VidaUtil());
 			}
 			else {
-				b.setVidadmissivel(b.getResta_VidaUtil());
+				setVidadmissivel(getResta_VidaUtil());
 			}
 		}
-		if (b.getVidadmissivel() <= 1 || b.getValor_aquisicao() <= 326.61) {
-			b.setValor_depreciado((float) 0);
+		if (getVidadmissivel() <= 1 || b.getValorAquisicao() <= 326.61) {
+			setValor_depreciado((float) 0);
 		}
 		else {
 			/* Depreciação acelerada*/
@@ -107,19 +115,83 @@ public class Calculo {
 				}
 			}
 			/* taxa de depreciação*/
-			b.setTaxaDepreciacao((100 / b.getVidadmissivel()) * calcTurno);
+			setTaxaDepreciacao((100 / getVidadmissivel()) * calcTurno);
 			/* valor depreciado no periodo*/
-			b.setValor_depreciado(((b.getValor_aquisicao() - b.getValor_residual()) * (b.getTaxaDepreciacao() / 100) / 12) * periodo);
+			setValor_depreciado(((b.getValorAquisicao() - getValor_residual()) * (getTaxaDepreciacao() / 100) / 12) * periodo);
 		}
 		/* valor contábil do bem até esse periodo*/
-		b.setValor_contabil(b.getValor_aquisicao() - b.getValor_depreciado());
+		setValor_contabil(b.getValorAquisicao() - getValor_depreciado());
 
 		/*caso a depreciação ultrapasse o valor residual*/
-		if (b.getValor_depreciado() >= (b.getValor_aquisicao() - b.getValor_residual())) {
-			b.setValor_contabil(b.getValor_residual());
-			b.setValor_depreciado(b.getValor_aquisicao());
+		if (getValor_depreciado() >= (b.getValorAquisicao() - getValor_residual())) {
+			setValor_contabil(getValor_residual());
+			setValor_depreciado(b.getValorAquisicao());
 		}
 		return b;
+	}
+
+	public Float getResta_VidaUtil() {
+		return resta_VidaUtil;
+	}
+
+	public void setResta_VidaUtil(Float resta_VidaUtil) {
+		this.resta_VidaUtil = resta_VidaUtil;
+	}
+
+	public Float getMetade_VidaUtil() {
+		return metade_VidaUtil;
+	}
+
+	public void setMetade_VidaUtil(Float metade_VidaUtil) {
+		this.metade_VidaUtil = metade_VidaUtil;
+	}
+
+	public Float getVidadmissivel() {
+		return vidadmissivel;
+	}
+
+	public void setVidadmissivel(Float vidadmissivel) {
+		this.vidadmissivel = vidadmissivel;
+	}
+
+	public Float getTaxaDepreciacao() {
+		return taxaDepreciacao;
+	}
+
+	public void setTaxaDepreciacao(Float taxaDepreciacao) {
+		this.taxaDepreciacao = taxaDepreciacao;
+	}
+
+	public Float getValor_residual() {
+		return valor_residual;
+	}
+
+	public void setValor_residual(Float valor_residual) {
+		this.valor_residual = valor_residual;
+	}
+
+	public Float getValor_depreciado() {
+		return valor_depreciado;
+	}
+
+	public void setValor_depreciado(Float valor_depreciado) {
+		this.valor_depreciado = valor_depreciado;
+	}
+
+	public Float getValor_contabil() {
+		return valor_contabil;
+	}
+
+	public void setValor_contabil(Float valor_contabil) {
+		this.valor_contabil = valor_contabil;
+	}
+
+	public Integer getDepreciacao() {
+		return depreciacao;
+	}
+
+	public void setDepreciacao(Integer depreciacao) {
+		this.depreciacao = depreciacao;
 	}
 
 	public Bem getBem() {

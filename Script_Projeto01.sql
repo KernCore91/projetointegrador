@@ -3,7 +3,7 @@
 drop table if exists baixa;
 drop table if exists patrimonio;
 
-create table patrimonio(
+create table Bem(
 	id serial primary key,
 	nome_bem varchar(50),
 	dataAquisicao date,
@@ -13,10 +13,12 @@ create table patrimonio(
 	valorAquisicao numeric,
 	taxa_residual numeric,
 	turnos numeric,
-	tempo_uso numeric
+	tempo_uso numeric,
+	dataAtual date,
+	periodo numeric
 );
 
-create table baixa(
+create table Baixa(
 	idBaixa serial primary key,
 	idPatrimonio integer,
 	dataDaBaixa date,
