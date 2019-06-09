@@ -23,6 +23,7 @@ public class Bem {
 	private Float tempo_uso;
 	private Date dataAtual;
 	private Integer periodo;
+
 	public Integer getId() {
 		return id;
 	}

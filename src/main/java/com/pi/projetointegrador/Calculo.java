@@ -16,6 +16,29 @@ public class Calculo {
 	private Integer depreciacao;
 	private Bem bem = new Bem();
 
+	public Calculo() {
+		super();
+	}
+
+	public Calculo(Bem bem) {
+		super();
+		this.bem = bem;
+	}
+
+	public Calculo(Float resta_VidaUtil, Float metade_VidaUtil, Float vidadmissivel, Float taxaDepreciacao,
+			Float valor_residual, Float valor_depreciado, Float valor_contabil, Integer depreciacao, Bem bem) {
+		super();
+		this.resta_VidaUtil = resta_VidaUtil;
+		this.metade_VidaUtil = metade_VidaUtil;
+		this.vidadmissivel = vidadmissivel;
+		this.taxaDepreciacao = taxaDepreciacao;
+		this.valor_residual = valor_residual;
+		this.valor_depreciado = valor_depreciado;
+		this.valor_contabil = valor_contabil;
+		this.depreciacao = depreciacao;
+		this.bem = bem;
+	}
+
 	public int calcularPeriodo(Bem b, Date dataAtual) {
 		int periodoDepreciado;
 		Calendar calendar = Calendar.getInstance();

@@ -6,12 +6,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Baixa {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idBaixa;
+	@ManyToOne
 	private Integer idPatrimonio;
 	private Date dataDaBaixa;
 	private Float valorDaBaixa;
@@ -19,6 +21,7 @@ public class Baixa {
 	private Float g_p;
 	private Float da;
 	private Float vc;
+
 	public Integer getIdBaixa() {
 		return idBaixa;
 	}

@@ -24,7 +24,7 @@ create table Baixa(
 	dataDaBaixa date,
 	valorDaBaixa numeric,
 	motivoDaBaixa varchar(10),
-	FOREIGN KEY (idPatrimonio) REFERENCES patrimonio (id)
+	FOREIGN KEY (idPatrimonio) REFERENCES Bem(id)
 );
 
 --insert into Bem (nome_bem, dataAquisicao, categoria, vida_util, bem_usado, valorAquisicao, taxa_residual, turnos)
