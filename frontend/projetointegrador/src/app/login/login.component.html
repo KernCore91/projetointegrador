@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+
+<body class="hold-transition login-page sidebar-mini sidebar-collapse">
+  <div class="login-box">
+    <div class="login-logo">Login</div>
+    <!-- login logo -->
+
+    <div class="login-box-body">
+      <p class="login-box-msg">Faça o Login:</p>
+      <form [formGroup]="formularioUsuario" (submit)="fazerLogin()">
+
+        <div class="form-group has-feedback">
+          <input id="email" type="email" class="form-control" placeholder="E-mail" formControlName="email">
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div><!-- form-group has-feedback -->
+
+        <div class="form-group has-feedback">
+          <input id="senha" type="password" class="form-control" placeholder="Senha" formControlName="password">
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div><!-- form-group has-feedback -->
+
+        <div class="row">
+          <div class="col-xs-6">
+            <button type="submit" class="btn btn-primary btn-block btn-flat">
+              Entrar
+            </button>
+          </div><!-- col-xs-6 -->
+        </div><!-- row -->
+
+      </form><!-- ../../index.html" method="post -->
+    </div><!-- login-box-body -->
+  </div><!-- login-box -->
+</body>
+</html>
+<router-outlet></router-outlet>
