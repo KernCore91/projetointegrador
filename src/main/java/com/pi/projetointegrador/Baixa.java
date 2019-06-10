@@ -6,15 +6,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
 
 @Entity
 public class Baixa {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idBaixa;
-	@ManyToOne
-	private Integer idPatrimonio;
+	@JoinColumn(name="idBem")
+	private Integer idBem;
 	private Date dataDaBaixa;
 	private Float valorDaBaixa;
 	private String motivoDaBaixa;
@@ -22,17 +22,28 @@ public class Baixa {
 	private Float da;
 	private Float vc;
 
+	public Baixa(Integer idBem, Date dataDaBaixa, Float valorDaBaixa, String motivoDaBaixa, Float g_p, Float da,
+			Float vc) {
+		super();
+		this.idBem = idBem;
+		this.dataDaBaixa = dataDaBaixa;
+		this.valorDaBaixa = valorDaBaixa;
+		this.motivoDaBaixa = motivoDaBaixa;
+		this.g_p = g_p;
+		this.da = da;
+		this.vc = vc;
+	}
 	public Integer getIdBaixa() {
 		return idBaixa;
 	}
 	public void setIdBaixa(Integer idBaixa) {
 		this.idBaixa = idBaixa;
 	}
-	public Integer getIdPatrimonio() {
-		return idPatrimonio;
+	public Integer getIdBem() {
+		return idBem;
 	}
-	public void setIdPatrimonio(Integer idPatrimonio) {
-		this.idPatrimonio = idPatrimonio;
+	public void setIdBem(Integer idBem) {
+		this.idBem = idBem;
 	}
 	public Date getDataDaBaixa() {
 		return dataDaBaixa;

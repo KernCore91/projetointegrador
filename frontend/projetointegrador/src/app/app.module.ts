@@ -14,6 +14,7 @@ import { BemComponent } from './bem/bem.component';
 import { HomeComponent } from './home/home.component';
 import { CalculoComponent } from './calculo/calculo.component';
 import { LoginComponent } from './login/login.component';
+import { BaixaComponent } from './baixa/baixa.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LoginComponent } from './login/login.component';
     BemComponent,
     HomeComponent,
     CalculoComponent,
-    LoginComponent
+    LoginComponent,
+    BaixaComponent
   ],
   imports: [
     BrowserModule,

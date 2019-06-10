@@ -8,31 +8,33 @@ import { BemRestService } from '../bem-rest.service';
 })
 export class BemComponent implements OnInit {
 
-  bem = { nome: '', cb: 0.0, data_aq: '', usado: '', anos_usado: '', turno: '', vida: '', vr: '', vendido: '', data_vd: '', valor_vd: '', da: '', i: '', n: '', valor_contabil: '' };
-  bens: any;
+	bem = {nome_bem: '', dataAquisicao: '', categoria: '', vida_util: '',
+		bem_usado: '', valorAquisicao: '', taxa_residual:'', turnos: '', tempo_uso: ''};
+	bems: any;
 
   constructor(private bemRest: BemRestService) { }
 
   ngOnInit() {
-    this.list();
+	this.list();
   }
 
   save() {
-    this.bemRest.save(this.bem).subscribe(p => {
-      this.list();
-      this.bem = { nome: '', cb: 0.0, data_aq: '', usado: '', anos_usado: '', turno: '', vida: '', vr: '', vendido: '', data_vd: '', valor_vd: '', da: '', i: '', n: '', valor_contabil: '' };
-    });
+	this.bemRest.save(this.bem).subscribe(p => {
+		this.list();
+	  this.bem = { nome_bem: '', dataAquisicao: '', categoria: '', vida_util: '',
+		bem_usado: '', valorAquisicao: '', taxa_residual:'', turnos: '', tempo_uso: ''};
+	});
   }
 
   list() {
-    this.bemRest.list().subscribe(p => { this.bem = p });
+	this.bemRest.list().subscribe(p => { this.bem = p });
   }
 
   edit(p) {
-    this.bem = p;
+	this.bem = p;
   }
 
-  delete(bemp) {
-    this.bemRest.delete(bemp.id).subscribe(p => {this.list()});
+  delete(bem) {
+	this.bemRest.delete(bem.id).subscribe(p => {this.list()});
   }
 }

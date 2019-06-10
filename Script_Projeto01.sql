@@ -20,11 +20,11 @@ create table Bem(
 
 create table Baixa(
 	idBaixa serial primary key,
-	idPatrimonio integer,
+	idBem integer,
 	dataDaBaixa date,
 	valorDaBaixa numeric,
 	motivoDaBaixa varchar(10),
-	FOREIGN KEY (idPatrimonio) REFERENCES Bem(id)
+	FOREIGN KEY (idBem) REFERENCES Bem(id)
 );
 
 --insert into Bem (nome_bem, dataAquisicao, categoria, vida_util, bem_usado, valorAquisicao, taxa_residual, turnos)

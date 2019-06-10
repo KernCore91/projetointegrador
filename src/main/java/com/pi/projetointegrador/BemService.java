@@ -34,4 +34,14 @@ public class BemService {
 	public void delete(@PathVariable("id") Integer id) {
 		bemDAO.deleteById(id);
 	}
+	
+	@RequestMapping(value="/calcular", method = RequestMethod.POST)
+	public Bem calcular(@PathVariable("id") Integer id, Date dateInf) {
+		Bem objBem = new Bem(id);
+		Bem b = new Calculo().calcularDepreciacao(objBem, dateInf);
+		objBem.setValor_contabil(b.getValor_contabil());
+		objBem.setValor_residual(b.getValor_residual());
+		objBem.setPeriodo(b.getPeriodo());
+		return objBem;
+	}
 }
