@@ -69,30 +69,30 @@ public class Calculo {
 	}
 
 	/*Calcular Depreciação*/
-	public Bem calcularDepreciacao(Bem b, Date dataInf) {
+	public Bem calcularDepreciacao(Bem b, Baixa baixa, Date dataInf) {
 		float calcTurno;
 		int periodo = this.calcularPeriodo(b, dataInf);
 
-		b.setPeriodo(periodo);
-		b.setValor_residual((b.getValoraquisicao() * b.getTaxa_residual()) / 100);
+		baixa.setPeriodo(periodo);
+		baixa.setValor_residual((b.getValorAquisicao() * b.getTaxa_residual()) / 100);
 		/// se o bem for usado ou não
 		if (b.getBem_usado() == "Não") {
-			b.setVidadmissivel(b.getVida_util());
+			baixa.setVidadmissivel(b.getVida_util());
 		}
 		else {
-			b.setMetade_VidaUtil(b.getVida_util() / 2);
-			b.setResta_VidaUtil(b.getVida_util() - b.getTempo_uso());
+			baixa.setMetade_VidaUtil(b.getVida_util() / 2);
+			baixa.setResta_VidaUtil(b.getVida_util() - b.getTempo_uso());
 
-			if (b.getVida_util() < b.getTempo_uso() || b.getMetade_VidaUtil() > b.getResta_VidaUtil()) {
-				b.setVidadmissivel(b.getMetade_VidaUtil());
+			if (b.getVida_util() < b.getTempo_uso() || baixa.getMetade_VidaUtil() > baixa.getResta_VidaUtil()) {
+				baixa.setVidadmissivel(baixa.getMetade_VidaUtil());
 			}
 			else {
-				b.setVidadmissivel(b.getResta_VidaUtil());
+				baixa.setVidadmissivel(baixa.getResta_VidaUtil());
 			}
 		}
 
-		if (b.getVidadmissivel() <= 1 || b.getValoraquisicao() <= 326.61) {
-			b.setValor_depreciado((float) 0);
+		if (baixa.getVidadmissivel() <= 1 || b.getValorAquisicao() <= 326.61) {
+			baixa.setValor_depreciado((float) 0);
 		}
 		else {
 			/* Depreciação acelerada*/
@@ -108,18 +108,18 @@ public class Calculo {
 				}
 			}
 			/* taxa de depreciação*/
-			b.setTaxaDepreciacao((100 / b.getVidadmissivel()) * calcTurno);
+			baixa.setTaxaDepreciacao((100 / baixa.getVidadmissivel()) * calcTurno);
 
 			/* valor depreciado no periodo*/
-			b.setValor_depreciado(((b.getValoraquisicao() - b.getValor_residual()) * (b.getTaxaDepreciacao() / 100) / 12) * periodo); // b.getPeriodo());
+			baixa.setValor_depreciado(((b.getValorAquisicao() - baixa.getValor_residual()) * (baixa.getTaxaDepreciacao() / 100) / 12) * periodo); // b.getPeriodo());
 		}
 		/* valor contábil do bem até esse periodo*/
-		b.setValor_contabil(b.getValoraquisicao() - b.getValor_depreciado());
+		baixa.setValor_contabil(b.getValorAquisicao() - baixa.getValor_depreciado());
 
 		/*caso a depreciação ultrapasse o valor residual*/
-		if (b.getValor_depreciado() >= (b.getValoraquisicao() - b.getValor_residual())) {
-			b.setValor_contabil(b.getValor_residual());
-			b.setValor_depreciado(b.getValoraquisicao());
+		if (baixa.getValor_depreciado() >= (b.getValorAquisicao() - baixa.getValor_residual())) {
+			baixa.setValor_contabil(baixa.getValor_residual());
+			baixa.setValor_depreciado(b.getValorAquisicao());
 		}
 		return b;
 	}

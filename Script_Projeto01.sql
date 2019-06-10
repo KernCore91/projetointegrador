@@ -14,8 +14,7 @@ create table Bem(
 	taxa_residual numeric,
 	turnos numeric,
 	tempo_uso numeric,
-	dataAtual date,
-	periodo numeric
+	dataAtual date
 );
 
 create table Baixa(
@@ -24,6 +23,9 @@ create table Baixa(
 	dataDaBaixa date,
 	valorDaBaixa numeric,
 	motivoDaBaixa varchar(10),
+	Valor_contabil numeric,
+	Valor_residual numeric,
+	Periodo integer,
 	FOREIGN KEY (idBem) REFERENCES Bem(id)
 );
 

@@ -1,0 +1,13 @@
+{
+  "_links" : {
+    "bems" : {
+      "href" : "http://localhost:8080/projetointegrador/bems"
+    },
+    "baixas" : {
+      "href" : "http://localhost:8080/projetointegrador/baixas"
+    },
+    "profile" : {
+      "href" : "http://localhost:8080/projetointegrador/profile"
+    }
+  }
+}

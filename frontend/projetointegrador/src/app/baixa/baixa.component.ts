@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BaixaRestService } from '../baixa-rest.service';
+import { BemComponent } from '../bem/bem.component';
 
 @Component({
   selector: 'p-baixa',
@@ -7,8 +8,9 @@ import { BaixaRestService } from '../baixa-rest.service';
   styleUrls: ['./baixa.component.css']
 })
 export class BaixaComponent implements OnInit {
-
-	baixa = { idBem: '', dataDaBaixa: '', valorDaBaixa: '', motivoDaBaixa: '', g_p: '', da: '', vc: '' };
+	
+	bem: any;
+	baixa = { idBem: '', dataDaBaixa: '', valorDaBaixa: '', motivoDaBaixa: '', Valor_contabil: '', Valor_residual: '', Periodo: '' };
 	baixas: any;
 
 	constructor(private baixaRest: BaixaRestService) { }
@@ -28,7 +30,11 @@ export class BaixaComponent implements OnInit {
     save() {
     this.baixaRest.save(this.baixa).subscribe(p => {
       this.list();
-      this.baixa = { idBem: '', dataDaBaixa: '', valorDaBaixa: '', motivoDaBaixa: '', g_p: '', da: '', vc: '' };
+      this.baixa = { idBem: '', dataDaBaixa: '', valorDaBaixa: '', motivoDaBaixa: '', Valor_contabil: '', Valor_residual: '', Periodo: '' };
     });
     }
+
+    calcular(idBem) {
+		this.baixaRest.calcular(this.baixa.idBem).subscribe(p => { this.calcular(idBem) });
+	}
 }

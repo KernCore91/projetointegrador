@@ -21,6 +21,22 @@ public class Baixa {
 	private Float g_p;
 	private Float da;
 	private Float vc;
+	
+//	calculo
+	private Float resta_VidaUtil;
+	private Float metade_VidaUtil;
+	private Float vidadmissivel;
+	private Float taxaDepreciacao;
+	private Float valor_residual;
+	private Float valor_depreciado;
+	private Float valor_contabil;
+	private Integer depreciacao;
+	private Integer periodo;
+	
+	public Baixa(Integer idBem) {
+		super();
+		this.idBem = idBem;
+	}
 
 	public Baixa(Integer idBem, Date dataDaBaixa, Float valorDaBaixa, String motivoDaBaixa, Float g_p, Float da,
 			Float vc) {
@@ -80,5 +96,61 @@ public class Baixa {
 	}
 	public void setVc(Float vc) {
 		this.vc = vc;
+	}
+	public Float getResta_VidaUtil() {
+		return resta_VidaUtil;
+	}
+	public void setResta_VidaUtil(Float resta_VidaUtil) {
+		this.resta_VidaUtil = resta_VidaUtil;
+	}
+	public Float getMetade_VidaUtil() {
+		return metade_VidaUtil;
+	}
+	public void setMetade_VidaUtil(Float metade_VidaUtil) {
+		this.metade_VidaUtil = metade_VidaUtil;
+	}
+	public Float getVidadmissivel() {
+		return vidadmissivel;
+	}
+	public void setVidadmissivel(Float vidadmissivel) {
+		this.vidadmissivel = vidadmissivel;
+	}
+	public Float getTaxaDepreciacao() {
+		return taxaDepreciacao;
+	}
+	public void setTaxaDepreciacao(Float taxaDepreciacao) {
+		this.taxaDepreciacao = taxaDepreciacao;
+	}
+	public Float getValor_residual() {
+		return valor_residual;
+	}
+	public void setValor_residual(Float valor_residual) {
+		this.valor_residual = valor_residual;
+	}
+	public Float getValor_depreciado() {
+		return valor_depreciado;
+	}
+	public void setValor_depreciado(Float valor_depreciado) {
+		this.valor_depreciado = valor_depreciado;
+	}
+	public Float getValor_contabil() {
+		return valor_contabil;
+	}
+	public void setValor_contabil(Float valor_contabil) {
+		this.valor_contabil = valor_contabil;
+	}
+	public Integer getDepreciacao() {
+		return depreciacao;
+	}
+	public void setDepreciacao(Integer depreciacao) {
+		this.depreciacao = depreciacao;
+	}
+
+	public Integer getPeriodo() {
+		return periodo;
+	}
+
+	public void setPeriodo(Integer periodo) {
+		this.periodo = periodo;
 	}
 }

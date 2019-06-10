@@ -27,6 +27,4 @@ export class BaixaRestService {
   delete(id: any): Observable<any> {
     return this.http.delete(endpoint + 'baixa/delete/' + id);
   }
-
-
 }
